@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { searchCharacter, searchMovie } from "../../utils/searchAPI";
+import { searchCharacter } from "../../utils/searchAPI";
 import ErrorPage from "../ErrorPage.js";
 import Logo from "../Logo";
 
