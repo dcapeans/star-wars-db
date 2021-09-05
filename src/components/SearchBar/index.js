@@ -11,6 +11,7 @@ export default function SearchBar(){
   const [searchForMovie, setSearchForMovie] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const [resultsFound, setResultsFound] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleSearchType = () => {
     setSearchForMovie(!searchForMovie)
@@ -33,15 +34,17 @@ export default function SearchBar(){
           debounceTimeout={300} 
           placeholder={searchForMovie ? "Search for movies" : "Search for characters"}
           onChange={async (e) => {
+            setIsLoading(true)
             setResultsFound(await searchAPI(searchForMovie, e.target.value))
             setInputValue(e.target.value)
+            setIsLoading(false)
           }}
         />
 
         <span className="toggle-search-button" onClick={toggleSearchType} style={searchForMovie ? {backgroundColor: "red"} : {backgroundColor: "green"}}>{searchForMovie ? <BiCameraMovie/> : <IoPeopleSharp/>}</span>
       </form>
       
-      <ResultContainer resultsFound={resultsFound} />
+      <ResultContainer resultsFound={resultsFound} isLoading={isLoading} searchForMovie={searchForMovie}/>
     </div>
   )
 }
