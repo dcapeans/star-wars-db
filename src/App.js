@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import CharacterPage from './components/CharacterPage'
 import Home from './components/HomePage'
 import MoviePage from './components/MoviePage'
 
@@ -13,7 +14,7 @@ export default function App() {
           <MoviePage />
         </Route>
         <Route path="/character/:id" exact>
-          <h1>Hello World</h1>
+          <CharacterPage />
         </Route>
       </Switch>
     </BrowserRouter>

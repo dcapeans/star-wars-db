@@ -29,6 +29,7 @@ export default function MoviePage(){
       }
     }
     getCharacters()
+    // eslint-disable-next-line
   }, [movieData])
 
   if(characters.length === 0 || !movieData){
@@ -41,7 +42,7 @@ export default function MoviePage(){
   }
 
   return (
-    <div className="movie-page-container">
+    <div className="container">
       <Logo />
       <div className="info-container">
         <div className="crawl">
@@ -67,9 +68,9 @@ export default function MoviePage(){
               </div>
               <div>
                 <span className="info-title">Characters: </span>
-                <p><Link to={`character/${characters[0].url.slice(-2, -1)}`} className="info-data">{characters[0].name}</Link></p>
-                <p><Link to={`character/${characters[1].url.slice(-2, -1)}`} className="info-data">{characters[1].name}</Link></p>
-                <p><Link to={`character/${characters[2].url.slice(-2, -1)}`} className="info-data">{characters[2].name}</Link></p>
+                <p><Link to={`/character/${characters[0].url.slice(-2, -1)}`} className="info-data">{characters[0].name}</Link></p>
+                <p><Link to={`/character/${characters[1].url.slice(-2, -1)}`} className="info-data">{characters[1].name}</Link></p>
+                <p><Link to={`/character/${characters[2].url.slice(-2, -1)}`} className="info-data">{characters[2].name}</Link></p>
               </div>
           </div>
         }
