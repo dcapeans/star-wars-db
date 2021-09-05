@@ -3,6 +3,7 @@ import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { searchCharacter, searchMovie } from "../../utils/searchAPI";
+import ErrorPage from "../ErrorPage.js";
 import Logo from "../Logo";
 
 import './characterPage.scss'
@@ -22,7 +23,7 @@ export default function CharacterPage(){
 
   useEffect(() => {
     async function getMovies(){
-      if(characterData) {
+      if(characterData && characterData !== 404) {
           const firstMovie = await searchCharacter(characterData.films[0])
           const secondMovie = await searchCharacter(characterData.films[1])
           const thirdMovie = await searchCharacter(characterData.films[2])
@@ -33,6 +34,9 @@ export default function CharacterPage(){
     // eslint-disable-next-line
   }, [characterData])
 
+  if(characterData === 404){
+    return <ErrorPage/>
+  }
 
   if(movies.length === 0 || !characterData){
     return (

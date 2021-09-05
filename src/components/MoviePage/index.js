@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { searchMovieById, searchCharacter } from "../../utils/searchAPI"
+import ErrorPage from "../ErrorPage.js"
 import Logo from "../Logo"
 import './moviePage.scss'
 
@@ -11,7 +12,7 @@ export default function MoviePage(){
   const { id } = useParams()
   const [movieData, setMovieData] = useState(null)
   const [characters, setCharacters] = useState([])
-  
+
   useEffect(() => {
     async function getMovieData(){
       setMovieData(await searchMovieById(id))
@@ -21,7 +22,7 @@ export default function MoviePage(){
 
   useEffect(() => {
     async function getCharacters(){
-      if(movieData) {
+      if(movieData && movieData !== 404) {
           const firstCharacter = await searchCharacter(movieData.characters[0])
           const secondCharacter = await searchCharacter(movieData.characters[1])
           const thirdCharacter = await searchCharacter(movieData.characters[2])
@@ -31,6 +32,10 @@ export default function MoviePage(){
     getCharacters()
     // eslint-disable-next-line
   }, [movieData])
+
+  if(movieData === 404){
+    return <ErrorPage/>
+  }
 
   if(characters.length === 0 || !movieData){
     return (

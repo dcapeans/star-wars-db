@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import CharacterPage from './components/CharacterPage'
+import ErrorPage from './components/ErrorPage.js'
 import Home from './components/HomePage'
 import MoviePage from './components/MoviePage'
 
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/character/:id" exact>
           <CharacterPage />
         </Route>
+        <Route component={ErrorPage}/>
       </Switch>
     </BrowserRouter>
   )

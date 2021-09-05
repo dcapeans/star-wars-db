@@ -10,13 +10,13 @@ export const searchAPI = (searchForMovie, searchTerm) => {
 export const searchCharacter = async (characterUrl) => {
   return await axios.get(characterUrl)
   .then(res => res.data)
-  .catch((err) => console.log(err.response.status + ": " + err.response.data.detail));
+  .catch((err) => err.response.status);
 }
 
 export const searchMovieById = async (movieId) => {
   return await axios.get(`https://swapi.dev/api/films/${movieId}`)
   .then(res => res.data)
-  .catch((err) => console.log(err.response.status + ": " + err.response.data.detail))
+  .catch((err) => err.response.status)
 }
 
 export const searchMovie = async (movieUrl) => {

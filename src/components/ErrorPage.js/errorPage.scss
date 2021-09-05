@@ -1,0 +1,27 @@
+.error-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 50%;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    aspect-ratio: 3 / 1;
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgb(225, 176, 0);
+    border-radius: 15px;
+    cursor: pointer;
+  }
+}
